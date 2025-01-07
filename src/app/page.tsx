@@ -3,12 +3,14 @@ import Hero from "./components/Hero";
 import WhatWeDo from "./components/WhatWeDo";
 import ContactUs from "./components/ContactUs";
 import Footer from "./components/Footer";
+import OnboardingProcess from "./components/Onbording";
 export default function Home() {
   return (
     <div className="min-h-screen bg-black text-white">
       <Dock logoSrc="/logo.png" />
       <Hero />
       <WhatWeDo />
+      <OnboardingProcess />
       <ContactUs />
       <Footer />
     </div>
