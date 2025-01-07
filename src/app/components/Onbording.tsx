@@ -1,6 +1,4 @@
-"use client"; // Mark the file as a client-side component
-
-import { useState } from "react";
+"use client"; // Ensures client-side rendering
 
 const onboardingSteps = [
   {
@@ -39,45 +37,27 @@ const onboardingSteps = [
 ];
 
 export default function OnboardingProcess() {
-  const [activeStep, setActiveStep] = useState(null);
-
-  const toggleStep = (index) => {
-    setActiveStep(activeStep === index ? null : index);
-  };
-
   return (
-    <div className="bg-black text-white py-10 px-4">
-      <h1 className="text-4xl font-bold text-center mb-10">
-        AVL Onboarding Process
-      </h1>
-      <div className="max-w-4xl mx-auto space-y-6">
+    <div className="bg-black text-white py-20 px-6">
+      <h1 className="text-5xl font-bold text-center mb-16">How We Do It</h1>
+      <div className="space-y-16 max-w-6xl mx-auto">
         {onboardingSteps.map((step, index) => (
           <div
             key={index}
-            className="border border-transparent rounded-lg bg-gradient-to-r from-[#ffd319] via-[#ff2975] to-[#8c1eff] p-1"
+            className="rounded-xl bg-gradient-to-r from-[#ffd319] via-[#ff2975] to-[#8c1eff] p-1 shadow-lg"
           >
-            <div
-              className="flex items-center justify-between px-6 py-4 bg-black rounded-lg cursor-pointer"
-              onClick={() => toggleStep(index)}
-            >
-              <div className="flex items-center space-x-4">
-                <span className="text-3xl">{step.icon}</span>
-                <h2 className="text-2xl font-semibold">{step.title}</h2>
+            <div className="bg-black p-8 rounded-xl">
+              <div className="flex items-center space-x-6 mb-6">
+                <span className="text-5xl">{step.icon}</span>
+                <h2 className="text-4xl font-bold">{step.title}</h2>
               </div>
-              <span className="text-xl">
-                {activeStep === index ? "-" : "+"}
-              </span>
+              <p className="text-lg text-gray-300 mb-6">{step.description}</p>
+              <ul className="list-disc list-inside space-y-2 text-gray-400">
+                {step.tasks.map((task, idx) => (
+                  <li key={idx}>{task}</li>
+                ))}
+              </ul>
             </div>
-            {activeStep === index && (
-              <div className="px-6 py-4 space-y-4 bg-[#1a1a1a] rounded-b-lg">
-                <p className="text-gray-300">{step.description}</p>
-                <ul className="list-disc list-inside text-gray-400">
-                  {step.tasks.map((task, idx) => (
-                    <li key={idx}>{task}</li>
-                  ))}
-                </ul>
-              </div>
-            )}
           </div>
         ))}
       </div>
