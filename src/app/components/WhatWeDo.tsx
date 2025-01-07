@@ -1,6 +1,5 @@
 "use client";
 
-import { Meteors } from "./magicui/Meteors";
 import { BorderBeam } from "./magicui/BorderBeam";
 
 export default function WhatWeDo() {
