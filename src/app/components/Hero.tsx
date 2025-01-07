@@ -17,12 +17,12 @@ export default function Hero() {
 
   return (
     <section className="relative min-h-dvh w-full overflow-hidden">
-      <RetroGrid className="z-10" />
+      <RetroGrid className="z-10 " />
 
-      <div className="relative mx-auto flex min-h-dvh w-full max-w-7xl flex-col px-4 sm:px-6 lg:px-8">
+      <div className="relative mx-auto flex min-h-dvh w-full max-w-7xl flex-col px-4 sm:px-6 lg:px-8 ">
         {/* Hero Content */}
-        <div className="mt-16 sm:mt-20 lg:mt-32 flex flex-col items-center justify-center text-center">
-          <h1 className="max-w-4xl bg-gradient-to-r from-indigo-300 via-purple-400 to-white bg-clip-text text-4xl font-extrabold tracking-tight text-transparent sm:text-5xl lg:text-6xl">
+        <div className="mt-16 sm:mt-20 lg:mt-32 flex flex-col items-center justify-center text-center ">
+          <h1 className="max-w-4xl bg-gradient-to-r from-indigo-300 via-purple-400 to-white bg-clip-text text-4xl font-extrabold tracking-tight text-transparent sm:text-5xl lg:text-6xl mt-24">
             Tailor-made services for your{" "}
             <span className="inline-block">
               <RotatingWords />
@@ -56,8 +56,8 @@ export default function Hero() {
 
         {/* Background Text */}
         <div className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-center">
-          <span className="block whitespace-pre-wrap bg-gradient-to-b from-[#ffd319] via-[#ff2975] to-[#8c1eff] bg-clip-text text-5xl font-bold tracking-tighter text-transparent">
-            You deserve the Best
+          <span className="block whitespace-pre-wrap bg-gradient-to-b from-[#ffd319] via-[#ff2975] to-[#8c1eff] bg-clip-text text-4xl font-bold tracking-tighter text-transparent">
+            Magic, At Your Service
           </span>
         </div>
       </div>
