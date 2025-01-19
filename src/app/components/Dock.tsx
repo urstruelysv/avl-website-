@@ -21,7 +21,7 @@ export default function Dock({ logoSrc }: DockProps) {
     <nav className="fixed top-0 left-0 right-0 p-4 flex justify-between items-center z-50">
       <Link href="/" className="relative w-10 h-10">
         <Image
-          src={logoSrc}
+          src="/logo.svg"
           alt="Logo"
           fill
           className="object-contain"

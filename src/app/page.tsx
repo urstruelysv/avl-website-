@@ -5,6 +5,7 @@ import ContactUs from "./components/ContactUs";
 import Footer from "./components/Footer";
 import OnboardingProcess from "./components/Onbording";
 import Companieslist from "./components/Companieslist";
+import Founder from "./components/Founder";
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
       <WhatWeDo />
       <OnboardingProcess />
       <ContactUs />
+      <Founder />
       <Footer />
     </div>
   );
