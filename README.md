@@ -11,7 +11,7 @@ Responsive Design: Optimized for mobile devices and desktops.
 Installation:
 
 Clone the repository:
-git clone https://github.com/your-username/avl-nextjs.git
+git clone https://github.com/urstruelysv/avl-website-.git
 Navigate into the project directory:
 cd avl-nextjs
 Install dependencies:
