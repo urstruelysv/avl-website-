@@ -393,11 +393,13 @@ export default function LandingPage() {
           color: "#fff",
         }}
       >
-        <h1 style={{ fontSize: "3rem", marginBottom: "1rem" }}>Get started</h1>
+        <h1 style={{ fontSize: "3rem", marginBottom: "1rem" }}>
+          Good things take time
+        </h1>
         <p style={{ fontSize: "1.25rem", marginBottom: "2rem" }}>
-          Start your digital journey with Avl
+          This page is under construction
         </p>
-        <button
+        {/* <button
           style={{
             backgroundColor: "#ff6600",
             color: "#fff",
@@ -409,7 +411,7 @@ export default function LandingPage() {
           }}
         >
           upgrade now
-        </button>
+        </button> */}
       </Flex>
     </Flex>
   );
