@@ -53,13 +53,10 @@ const ContactForm = () => {
     "w-full rounded-lg border border-gray-300 bg-gray-900 px-4 py-2.5 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-pink-500";
 
   return (
-    // Use a solid black background
     <div className="min-h-screen flex items-center justify-center bg-black p-4">
-      {/* Uncomment below for gradient background */}
-      {/* <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#ffd319] via-[#ff2975] to-[#8c1eff] p-4"> */}
-      <div className="w-full max-w-3xl rounded-xl bg-black p-8 shadow-2xl sm:p-12">
+      <div className="w-full max-w-3xl rounded-xl bg-black/50 backdrop-blur-lg p-8 shadow-2xl sm:p-12 border border-white/10">
         <h3 className="mb-8 text-center text-3xl font-bold text-white sm:text-4xl">
-          Contact Us
+          Ready to Upgrade
         </h3>
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
