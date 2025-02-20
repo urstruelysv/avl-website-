@@ -13,7 +13,7 @@ export default function Home() {
     <div className="min-h-screen bg-black text-white">
       <Dock logoSrc="/logo.png" />
       <Hero />
-      <Companieslist />
+      {/* <Companieslist /> */}
       <WhatWeDo />
       <Ready />
       <OnboardingProcess />
