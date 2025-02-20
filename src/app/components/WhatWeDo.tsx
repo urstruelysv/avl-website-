@@ -27,13 +27,14 @@ export default function WhatWeDo() {
             {/* Your main content goes here */}
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 relative z-10">
+              <BorderBeam></BorderBeam>
               <div className="bg-white/5 rounded-lg p-6 sm:p-8 hover:bg-white/10 transition-colors backdrop-blur-sm border border-white/10">
                 <h3 className="text-lg sm:text-xl font-bold mb-3 text-blue-400">
                   Digital Presence
                 </h3>
                 <p className="text-base text-white/70">
                   From logo design to web development, social media strategy to
-                  digital marketing—we handle every aspect of your digital
+                  digital marketing — we handle every aspect of your digital
                   footprint with precision and creativity.
                 </p>
               </div>
