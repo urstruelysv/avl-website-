@@ -57,7 +57,7 @@ export default function Home() {
     <div className="container">
       <div className="overlay fixed inset-0 flex justify-center items-center">
         <h1
-          className="text-center text-black-900 font-bold text-3xl"
+          className="text-center font-bold text-3xl"
           style={{ fontFamily: "'Montserrat', sans-serif" }}
         >
           AI is changing every day, Aethos will stay up for you
