@@ -17,7 +17,6 @@ export default function Home() {
       <WhatWeDo />
       <Ready />
       <OnboardingProcess />
-
       <ContactUs />
       <Founder />
       <Footer />
