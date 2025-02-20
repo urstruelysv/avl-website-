@@ -13,7 +13,7 @@ interface MarqueeProps extends ComponentPropsWithoutRef<"div"> {
   reverse?: boolean;
   /**
    * Whether to pause the animation on hover
-   * @default false
+   * @default true;
    */
   pauseOnHover?: boolean;
   /**

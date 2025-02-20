@@ -5,7 +5,7 @@ const foundersData = [
     id: 1,
     name: "Sai Vamshi Gannoju",
     role: "Founder & CEO",
-    image: "/sai.svg",
+    image: "/sai.svg/",
     bio: "Passionate about transforming ideas into reality. With expertise in AI and automation, I help businesses thrive in the modern digital world.",
 
     expertise: [
@@ -20,6 +20,7 @@ const foundersData = [
     name: "Sharth Reddy Thandra",
     role: "Co-Founder",
     image: "/api/placeholder/160/160",
+    alt: "founder img",
     bio: "Leading innovation through technology. Specialized in video and content .",
 
     expertise: ["video", "Team Leadership"],

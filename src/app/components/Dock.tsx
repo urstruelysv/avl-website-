@@ -18,16 +18,18 @@ export default function Dock({ logoSrc }: DockProps) {
   ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 p-4 flex justify-between items-center z-50">
-      <Link href="/" className="relative w-10 h-10">
+    <nav className="fixed top-0 left-0 right-0 p-5 flex justify-between items-center z-50 bg-black/75 backdrop-blur-sm">
+      <Link href="/" className="relative w-32 h-32">
         <Image
-          src="/logo.svg"
+          src="/logo1.png"
           alt="Logo"
           fill
           className="object-contain"
           priority
         />
       </Link>
+
+      <div className="flex-grow border-t border-white mx-4"></div>
 
       <button
         onClick={() => setIsMenuOpen(!isMenuOpen)}
