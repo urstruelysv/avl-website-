@@ -15,8 +15,9 @@ export default function Home() {
       <Hero />
       <Companieslist />
       <WhatWeDo />
-      <OnboardingProcess />
       <Ready />
+      <OnboardingProcess />
+
       <ContactUs />
       <Founder />
       <Footer />
