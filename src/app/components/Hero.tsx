@@ -22,7 +22,7 @@ export default function Hero() {
       <div className="relative mx-auto flex min-h-dvh w-full max-w-7xl flex-col px-4 sm:px-6 lg:px-8 ">
         {/* Hero Content */}
         <div className="mt-16 sm:mt-20 lg:mt-32 flex flex-col items-center justify-center text-center ">
-          <h1 className="max-w-4xl bg-gradient-to-r from-indigo-300 via-purple-400 to-white bg-clip-text text-4xl font-extrabold tracking-tight text-transparent sm:text-5xl lg:text-6xl mt-24">
+          <h1 className="max-w-4xl bg-gradient-to-r from-indigo-300 via-purple-400 to-white bg-clip-text text-4xl font-extrabold tracking-tight text-transparent sm:text-5xl lg:text-6xl mt-32">
             Tailor-made services for your{" "}
             <span className="inline-block">
               <RotatingWords />
