@@ -52,7 +52,7 @@ export default function Footer() {
             <div className="space-y-2">
               <p className="text-white/70">
                 <span className="text-blue-400">Email:</span>{" "}
-                hello@aethosvision.com
+                hello@aethoscompany.in
               </p>
             </div>
             {/* Social Links */}

@@ -142,7 +142,7 @@ export function ContactForm() {
             />
             <Button type="submit" className="w-full" disabled={loading}>
               {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-              Submit Enquiry
+              Send message
             </Button>
           </form>
         </Form>
