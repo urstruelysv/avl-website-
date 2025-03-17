@@ -1,155 +1,156 @@
 "use client";
 
-import { useState, FormEvent } from "react";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Loader2 } from "lucide-react";
+import { toast } from "sonner";
 
-type FormData = {
-  name: string;
-  email: string;
-  companyName: string;
-  details: string;
-  helpNeeded: string;
-};
+import { Button } from "@/components/ui/button";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 
-type FormErrors = Partial<Record<keyof FormData, string>>;
+import { type ContactFormValues, contactFormSchema } from "../../lib/schema";
 
-const ContactForm = () => {
-  const [formData, setFormData] = useState<FormData>({
-    name: "",
-    email: "",
-    companyName: "",
-    details: "",
-    helpNeeded: "",
+export function ContactForm() {
+  const [loading, setLoading] = useState(false);
+
+  const form = useForm<ContactFormValues>({
+    resolver: zodResolver(contactFormSchema),
+    defaultValues: {
+      email: "",
+      firstName: "",
+      companyName: "",
+      message: "",
+    },
   });
 
-  const [errors, setErrors] = useState<FormErrors>({});
+  async function onSubmit(data: ContactFormValues) {
+    setLoading(true);
+    try {
+      const response = await fetch("/api/send", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
 
-  const validateForm = (): boolean => {
-    const newErrors: FormErrors = {};
-    const requiredFields = ["name", "email", "companyName", "helpNeeded"];
-    requiredFields.forEach((field) => {
-      if (!formData[field as keyof FormData].trim()) {
-        newErrors[field as keyof FormData] = `${field
-          .charAt(0)
-          .toUpperCase()}${field.slice(1)} is required`;
+      if (!response.ok) {
+        throw new Error("Failed to send message");
       }
-    });
 
-    if (formData.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = "Please enter a valid email address";
+      toast.success("Your message has been sent successfully.");
+      form.reset();
+    } catch (error) {
+      toast.error("Something went wrong. Please try again later.");
+    } finally {
+      setLoading(false);
     }
-
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
-
-  const handleSubmit = async (e: FormEvent) => {
-    e.preventDefault();
-    if (validateForm()) {
-      console.log("Form submitted:", formData);
-    }
-  };
-
-  const inputClasses =
-    "w-full rounded-lg border border-gray-300 bg-gray-900 px-4 py-2.5 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-pink-500";
+  }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-black p-4">
-      <div className="w-full max-w-3xl rounded-xl bg-black/50 backdrop-blur-lg p-8 shadow-2xl sm:p-12 border border-white/10">
-        <h3 className="mb-8 text-center text-3xl font-bold text-white sm:text-4xl">
-          Ready to Upgrade
-        </h3>
-        <form onSubmit={handleSubmit} className="space-y-6">
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-            {["name", "email"].map((field) => (
-              <div key={field}>
-                <label
-                  htmlFor={field}
-                  className="mb-2 block text-sm font-medium text-gray-200"
-                >
-                  {field.charAt(0).toUpperCase() + field.slice(1)} *
-                </label>
-                <input
-                  type={field === "email" ? "email" : "text"}
-                  id={field}
-                  value={formData[field as keyof FormData]}
-                  onChange={(e) =>
-                    setFormData({ ...formData, [field]: e.target.value })
-                  }
-                  className={`${inputClasses} ${
-                    errors[field as keyof FormData] && "border-red-500"
-                  }`}
-                  placeholder={`Enter your ${field}`}
-                />
-                {errors[field as keyof FormData] && (
-                  <p className="mt-1 text-sm text-red-500">
-                    {errors[field as keyof FormData]}
-                  </p>
-                )}
-              </div>
-            ))}
-          </div>
+    <div className="grid min-h-screen grid-cols-1 md:grid-cols-2">
+      <div className="relative flex items-center justify-center bg-zinc-900 p-8 text-white">
+        <div className="relative z-10 max-w-lg">
+          <p className="text-sm font-medium uppercase tracking-wider text-zinc-400">
+            WORK WITH US TODAY
+          </p>
+          <h1 className="mt-4 text-5xl font-serif">Ready to Upgrade?</h1>
+          <p className="mt-4 text-zinc-400">
+            Dive into the future with Aeos Labs. Get in touch and build out a
+            smarter, more automated org.
+          </p>
+        </div>
+        <div
+          className="absolute inset-0 bg-cover bg-center opacity-20"
+          style={{
+            backgroundImage: "url('/placeholder.svg?height=600&width=800')",
+          }}
+        />
+      </div>
 
-          {["companyName", "helpNeeded", "details"].map((field) => (
-            <div key={field}>
-              <label
-                htmlFor={field}
-                className="mb-2 block text-sm font-medium text-gray-200"
-              >
-                {field === "companyName"
-                  ? "Company/Business Name *"
-                  : field === "helpNeeded"
-                  ? "How can we help? *"
-                  : "Additional Details"}
-              </label>
-              {field === "helpNeeded" || field === "details" ? (
-                <textarea
-                  id={field}
-                  rows={field === "helpNeeded" ? 4 : 3}
-                  value={formData[field as keyof FormData]}
-                  onChange={(e) =>
-                    setFormData({ ...formData, [field]: e.target.value })
-                  }
-                  className={`${inputClasses} ${
-                    errors[field as keyof FormData] && "border-red-500"
-                  }`}
-                  placeholder={
-                    field === "helpNeeded"
-                      ? "Tell us what you're looking for"
-                      : "Provide any additional details"
-                  }
-                />
-              ) : (
-                <input
-                  type="text"
-                  id={field}
-                  value={formData[field as keyof FormData]}
-                  onChange={(e) =>
-                    setFormData({ ...formData, [field]: e.target.value })
-                  }
-                  className={`${inputClasses} ${
-                    errors[field as keyof FormData] && "border-red-500"
-                  }`}
-                  placeholder={`Enter your ${field}`}
-                />
-              )}
-              {errors[field as keyof FormData] && (
-                <p className="mt-1 text-sm text-red-500">
-                  {errors[field as keyof FormData]}
-                </p>
-              )}
-            </div>
-          ))}
-
-          <button
-            type="submit"
-            className="w-full rounded-lg bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 px-6 py-3 text-lg font-medium text-white shadow-lg transition-transform duration-300 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-pink-500"
+      <div className="flex items-center justify-center p-8">
+        <Form {...form}>
+          <form
+            onSubmit={form.handleSubmit(onSubmit)}
+            className="w-full max-w-lg space-y-6"
           >
-            Send Message
-          </button>
-        </form>
+            <FormField
+              control={form.control}
+              name="email"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Email</FormLabel>
+                  <FormControl>
+                    <Input placeholder="email@example.com" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="firstName"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>First Name</FormLabel>
+                  <FormControl>
+                    <Input placeholder="John" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="companyName"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Company Name</FormLabel>
+                  <FormControl>
+                    <Input placeholder="Acme Inc." {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="message"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>How can we help?</FormLabel>
+                  <FormControl>
+                    <Textarea
+                      placeholder="Tell us about your project..."
+                      className="min-h-[120px] resize-none"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <Button type="submit" className="w-full" disabled={loading}>
+              {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+              Submit Enquiry
+            </Button>
+          </form>
+        </Form>
       </div>
     </div>
   );
-};
+}
 
-export default ContactForm;
+export default function ContactUs() {
+  return <ContactForm />;
+}
