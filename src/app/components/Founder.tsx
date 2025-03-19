@@ -19,7 +19,7 @@ const foundersData = [
     id: 2,
     name: "Sharth Reddy Thandra",
     role: "Co-Founder",
-    image: "/api/placeholder/160/160",
+    image: "/sharath.jpg",
     alt: "founder img",
     bio: "Leading innovation through technology. Specialized in video and content .",
 
