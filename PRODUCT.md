@@ -1,9 +1,11 @@
 # Aethos Vision Labs
 
-A Hyderabad-based engineering and creative team offering digital presence, AI and automation, and video/content services. The existing site names Sai Vamshi Gannoju and Sharth Reddy Thandra as founders, and hello@aethoscompany.in as the contact address. Visitor goal: understand the offering and submit a project enquiry. Keep existing contact delivery behavior and factual company content. Do not invent clients, metrics, testimonials, pricing, or capabilities beyond the incumbent offerings.
+Confirmed facts: Aethos Vision Labs (AVL), Hyderabad, India; https://www.aethoscompany.in. Services are websites and brand design, AI tools and workflow automation, video and social content.
 
-The user explicitly requested a black, contemporary site with the visual impact, dithering, and staged service explanations of unfair.so. Use original design and content, not its assets, proprietary typography, or commercial claims. Stageshow is requested for believable illustrative UI. Responsive behavior is required across phone, tablet and desktop.
+Team: Sai Vamshi Gannoju (Founder: AI, systems, product) and Sharath Reddy Thandra (Co-Founder: video and content). The latter portrait is public/sharath.jpg. The team component stays hidden from the homepage at the user's explicit request; correct source text only.
 
-Latest correction: AVL is a services studio, not a software product. Lead with commissioned websites, engineering and content services. The user approved their portfolio (https://saivamshi.aethoscompany.in/projects) as the source of real work. Feature Indo Global School, Alpha Fitness and Cirro as selected business builds from founder Sai Vamshi Gannoju’s portfolio; do not conflate SaaS contract work or personal experiments with agency clients. No genuine testimonial quotes were supplied or found. Keep quote content unpublished until provided.
+Contact: hello@aethoscompany.in; https://cal.com/vamshi007/15min; WhatsApp +91 7286885570. Existing contact email delivery addresses remain unchanged.
 
-Elaya’s landing-page and redesign skills are installed under .agents/skills. The user pins the incumbent black and blue palette, dither treatment and serif display voice; preserve them over conflicting default font or surface rules. Add visible, purposeful motion while keeping controls and reduced-motion support.
+The user removed selected work, the extra slogan block and the floating motion control. WorkStrip renders nothing until projects are explicitly confirmed. Do not use video monetization language or invent clients, results, testimonials, prices, members, dates, or project start slots.
+
+User-authorized visible placeholders: “Projects start at ₹TODO” and “Taking 1 new project. Next slot: TODO”. Preserve the original slogan “Magic, at your service.” and black/blue dither visual identity. The specific nav/button/headline corrections are authorized alongside the content/metadata pass; other surfaces retain their current layout. No new dependencies.

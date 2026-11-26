@@ -1,34 +1,27 @@
-# AVL — a services studio with a pulse
+# AVL current design
 
-## Direction
-AVL sells design, development, AI/automation and content services. Visitors should understand the offer, see real work and start a project conversation. The approved black and blue visual world, pixel serif headlines and dither field remain. This update adds visible motion and project evidence; it does not turn AVL into a software product.
+The website presents Aethos Vision Labs as a services studio. Confirmed business content is in PRODUCT.md. Use the installed Elaya landing-page/redesign skills and Stageshow for the existing illustrative process, subject to the user's explicit scope.
 
-The user supplied Elaya's ai-design-skills and their portfolio. Elaya's landing-page and existing-project redesign skills are installed under `.agents/skills`, with the license. Explicit user choices preserve the existing display font and black palette over conflicting skill defaults. Stageshow authors a website commission walkthrough, not an app being offered for sale.
+## Preserved system
+- Black surface `#08090b`, process surface `#101215`, foreground `#f0f0ed`, single blue accent `#8cb9ff`.
+- Local Geist body type and Instrument Serif display type. The source font license remains in public/fonts.
+- PixelHeading keeps semantic HTML text and an aria-hidden canvas. Canvas glyphs now advance explicitly with a small positive gap and fit within their line, avoiding crowded or cut-off lettering.
+- The responsive services, process and contact layouts stay as implemented. The team component stays hidden by explicit user choice; its source names and roles are corrected.
 
-## Visual system
-- Canvas: `#08090b`; process surface `#101215`; illustrated website `#181818`; overlay `#272727`.
-- Foreground: `#f0f0ed`, supporting copy around `#a5afbd`. One blue accent, `#8cb9ff`.
-- Body: locally loaded Geist Sans. Display: locally hosted Instrument Serif, rasterized into a pixel canvas with semantic text fallback. Font license remains in `public/fonts`.
-- New content uses the Tailwind type scale and 8/12/16/24/32/40/48/64/80/96px spacing steps. Approved incumbent pixel display sizes stay intact.
-- Desktop content is capped at 1200px. Corners are restrained, rules are 1px, and any elevated object has an offset, blurred shadow.
-- Phosphor icons carry the visible studio UI. Existing unused kit components retain their own icon implementation.
+## Requested visible corrections
+The navigation has a transparent header with Services, How we work and Get in touch, preserving the existing mobile menu behavior. The main and form actions use the same blue face, contained arrow, hover and press feedback. No new design dependency is added.
 
-## Page and proof
-Hero → selected work → word reveal statement → services → process → contact → footer. The founders section is removed from the home page. The service list uses horizontal ruled passages rather than three equal cards. Project previews lead the page after the hero.
+The selected-work display and extra slogan block are removed. WorkStrip renders null with a project-confirmation TODO. There are no links to a missing Work section. Headings use plain labels: What we do, How we work, Start a project. Hero copy states the actual services and audience. The requested availability and price placeholders stay visible beneath the main action.
 
-Selected work is sourced from https://saivamshi.aethoscompany.in/projects and explicitly attributed to founder Sai Vamshi Gannoju's portfolio. Indo Global School, Cirro and Alpha Fitness use real website captures and live links. SaaS contract work and personal experiments are excluded. Client testimonials remain unpublished because no actual client quotes were supplied or found.
+## Motion
+The existing dither atmosphere and Stageshow website-commission sequence remain. Discover, Build and Launch allow direct state selection; Replay restarts the once-in-view sequence. The wide stage remains 720×480, with a 358×450 compact website document below 560px.
 
-## Motion thesis
-The focal sequence is a commissioned website: a brief arrives over a coherent website preview, design work takes shape, then a blue delivery note completes the story. This is one illustrative project, not a client engagement claim.
+The floating Play/Pause control is removed at the user's request. Operating-system reduced-motion preferences automatically stop decorative movement and show the complete delivery poster. Hidden/offscreen canvas drawing remains skipped. Buttons and menu transitions inherit the reduced-motion rules.
 
-The dither field now visibly evolves through curved Bayer threshold fields, at no more than one redraw per 55ms. Its phase persists across pause/resume. Hidden or offscreen canvases skip work. Three quiet hero labels drift; the hero settles once. The separate studio statement activates words in reading order through IntersectionObserver, with no unthrottled scroll listener. Work images respond to hover and keyboard focus.
+## Small additions
+Three contact paths: existing form, supplied booking link and supplied WhatsApp link. Email remains a mailto link with a separate copy control and feedback. The form includes a honeypot, server validation and specific success/error states. Tracking emits typed local browser events only; no analytics service is installed.
 
-The Stageshow sequence plays once when visible, advances after 1.8s and 4.6s, and holds the final delivery state. The three retained overlays move as whole opaque objects. External Discover/Create/Deliver controls allow direct inspection, stopping automatic playback; Replay explicitly starts a new sequence. Wide design area is 720×480. Below 560px, the 358×450 composition uses a website document card rather than a squeezed desktop browser window.
+The footer displays live Hyderabad time. Metadata, canonical, robots, sitemap, structured data and the local-logo social image use the confirmed domain and service facts. The 404 has one sentence and a home link.
 
-A persistent Pause motion control freezes the dither field, decorative CSS animation and current walkthrough phase. Reduced motion shows a complete delivery poster, static dither and fully readable statement. No control requires waiting for animation.
-
-## Responsive and access
-Work becomes a single column on phones, with useful project captions and visible visit links. The mobile navigation is a full-height panel with a morphing toggle, keyboard focus handling, body scroll lock and Escape dismissal. The page includes a skip link, focus styles, semantic headings and a branded 404. Contact validation and delivery stay intact. Metadata describes services, and the social preview is generated locally instead of pointing at an unrelated image host.
-
-## Styling boundary
-Global site styling belongs to `src/app/globals.css`. The original Stageshow CSS remains separate under `/kit`, linked once from the root layout. Project illustration geometry and retained scene transitions are scoped to `.project-stage` in `project-stage.css`; kit row/device internals are not reshaped.
+## Boundaries
+Only the specifically requested nav, button and headline treatments change visually. Other changes are copy, links, metadata, removal of rejected content, and small helpers. No unconfirmed projects, claims, quotes, prices, start dates or profile links are filled in. Original Stageshow CSS remains separate under /kit; no kit internals change.
