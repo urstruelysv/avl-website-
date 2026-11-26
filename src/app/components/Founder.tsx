@@ -33,7 +33,7 @@ const FounderCard = ({ founder }: { founder: (typeof foundersData)[0] }) => {
       {/* Floating effect background */}
       <div className="absolute -inset-0.5 border border-white/10 rounded-lg opacity-100 group-hover:border-blue-400/30 transition duration-300"></div>
 
-      <div className="relative h-full flex flex-col bg-zinc-950 p-8 rounded-lg hover:bg-zinc-900/90 transition-all duration-300 transform hover:-translate-y-1">
+      <div className="relative h-full flex flex-col bg-zinc-950 p-5 sm:p-8 rounded-lg hover:bg-zinc-900/90 transition-all duration-300 transform hover:-translate-y-1">
         <div className="flex flex-col items-center">
           <div className="w-32 h-32 mb-6 relative">
             <img
@@ -55,7 +55,7 @@ const FounderCard = ({ founder }: { founder: (typeof foundersData)[0] }) => {
         </div>
 
         <div className="flex-grow">
-          <p className="text-gray-300 mb-6 text-center">{founder.bio}</p>
+          <p className="text-gray-300 mb-6 text-center leading-relaxed">{founder.bio}</p>
 
           <div className="space-y-2">
             <p className="text-sm text-gray-400 font-medium">
@@ -80,15 +80,15 @@ const FounderCard = ({ founder }: { founder: (typeof foundersData)[0] }) => {
 
 const Founders = () => {
   return (
-    <div className="min-h-screen bg-black text-white">
-      <div className="max-w-7xl mx-auto px-6 py-20">
-        <h1 className="text-4xl md:text-5xl font-bold text-center mb-16">
+    <div className="bg-black text-white">
+      <div className="max-w-7xl mx-auto px-5 py-16 sm:px-8 sm:py-24">
+        <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-center mb-12">
           <span className="text-white">
             Meet Our Founders
           </span>
-        </h1>
+        </h2>
 
-        <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-6 sm:gap-8 max-w-5xl mx-auto">
           {foundersData.map((founder) => (
             <FounderCard key={founder.id} founder={founder} />
           ))}

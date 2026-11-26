@@ -41,7 +41,7 @@ export default function Dock({ logoSrc }: DockProps) {
 
   return (
     <nav ref={menuRef} aria-label="Main navigation" className="fixed top-0 left-0 right-0 px-5 py-3 sm:px-8 sm:py-4 flex justify-between items-center z-50 bg-black/75 backdrop-blur-sm">
-      <Link href="/" className="relative w-20 h-20 sm:w-24 sm:h-24">
+      <Link href="/" className="relative shrink-0 w-20 h-20 sm:w-24 sm:h-24">
         <Image
           src="/logo1.png"
           alt="Aethos Vision Labs"

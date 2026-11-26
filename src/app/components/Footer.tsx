@@ -52,21 +52,10 @@ export default function Footer() {
             <div className="space-y-2">
               <p className="text-white/70">
                 <span className="text-blue-400">Email:</span>{" "}
-                hello@aethoscompany.in
+                <a href="mailto:hello@aethoscompany.in" className="hover:text-blue-400">hello@aethoscompany.in</a>
               </p>
             </div>
-            {/* Social Links */}
-            <div className="flex space-x-4 pt-4">
-              {["Twitter", "LinkedIn", "GitHub"].map((platform) => (
-                <Link
-                  key={platform}
-                  href="#"
-                  className="text-white/50 hover:text-blue-400 transition-colors"
-                >
-                  {platform}
-                </Link>
-              ))}
-            </div>
+
           </div>
         </div>
 

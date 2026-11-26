@@ -4,14 +4,15 @@
 
 export default function WhatWeDo() {
   return (
-    <div className="min-h-screen bg-black text-white relative py-24 sm:py-32">
+    <div className="bg-black text-white relative py-20 sm:py-24">
       {/* Top separator line */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="space-y-8 sm:space-y-12">
+          <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">What We Do</h2>
           {/* Main description */}
-          <p className="text-lg sm:text-xl lg:text-2xl text-white/80 leading-relaxed max-w-3xl">
+          <p className="text-base sm:text-lg lg:text-xl text-white/80 leading-relaxed max-w-3xl">
             At{" "}
             <span className="font-bold text-blue-400">Aethos Vision Labs</span>,
             we're your all-in-one digital partner. Whether you need AI tools to
@@ -32,7 +33,7 @@ export default function WhatWeDo() {
                 <h3 className="text-lg sm:text-xl font-bold mb-3 text-blue-400">
                   Digital Presence
                 </h3>
-                <p className="text-base text-white/70">
+                <p className="text-base leading-relaxed text-white/70">
                   From logo design to web development, social media strategy to
                   digital marketing — we handle every aspect of your digital
                   footprint with precision and creativity.
@@ -44,7 +45,7 @@ export default function WhatWeDo() {
                 <h3 className="text-lg sm:text-xl font-bold mb-3 text-blue-400">
                   AI-Driven Solutions
                 </h3>
-                <p className="text-base text-white/70">
+                <p className="text-base leading-relaxed text-white/70">
                   Every decision is backed by data, delivering campaigns and
                   tools that work for you through our advanced AI-driven
                   insights and analytics.
@@ -72,7 +73,7 @@ export default function WhatWeDo() {
       <div className="absolute top-0 left-0 w-1/2 sm:w-1/3 h-1/4 sm:h-1/3 bg-blue-600/[0.03] blur-[50px] sm:blur-[100px] rounded-full -z-10" />
 
       {/* Bottom separator line */}
-      <div className="absolute bottom-[20%] left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
     </div>
   );
 }

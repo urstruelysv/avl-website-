@@ -4,7 +4,6 @@ import WhatWeDo from "./components/WhatWeDo";
 import ContactUs from "./components/ContactUs";
 import Footer from "./components/Footer";
 import OnboardingProcess from "./components/Onbording";
-import Companieslist from "./components/Companieslist";
 import Founder from "./components/Founder";
 import AiImage from "./components/AiImage";
 
@@ -13,7 +12,6 @@ export default function Home() {
     <div className="min-h-screen bg-black text-white">
       <Dock logoSrc="/logo.png" />
       <Hero />
-      <Companieslist />
       <section id="services" aria-label="Our services"><WhatWeDo /></section>
       <AiImage />
       <OnboardingProcess />

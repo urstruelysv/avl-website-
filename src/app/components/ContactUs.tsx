@@ -4,7 +4,6 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Loader2, CheckCircle2 } from "lucide-react";
-import { toast } from "sonner";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -24,6 +23,7 @@ import { type ContactFormValues, contactFormSchema } from "../../lib/schema";
 export function ContactForm() {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const form = useForm<ContactFormValues>({
     resolver: zodResolver(contactFormSchema),
@@ -37,6 +37,7 @@ export function ContactForm() {
 
   async function onSubmit(data: ContactFormValues) {
     setLoading(true);
+    setErrorMessage("");
     setSuccess(false);
     try {
       const response = await fetch("/api/send", {
@@ -57,7 +58,7 @@ export function ContactForm() {
       form.reset();
     } catch (error) {
       console.error("Error sending message:", error);
-      toast.error(
+      setErrorMessage(
         error instanceof Error
           ? error.message
           : "Something went wrong. Please try again later."
@@ -68,22 +69,20 @@ export function ContactForm() {
   }
 
   return (
-    <div className="grid min-h-screen grid-cols-1 md:grid-cols-2">
-      <div className="relative flex items-center justify-center bg-zinc-900 p-8 text-white">
+    <div className="avl-contact mx-auto grid max-w-7xl grid-cols-1 gap-10 border-t border-white/10 px-5 py-20 text-white sm:px-8 sm:py-24 md:grid-cols-2 md:gap-16">
+      <div className="relative flex items-start text-white">
         <div className="relative z-10 max-w-lg">
-          <p className="text-sm font-medium uppercase tracking-wider text-zinc-400">
-            WORK WITH US TODAY
-          </p>
-          <h1 className="mt-4 text-5xl font-serif">Ready to Upgrade?</h1>
-          <p className="mt-4 text-zinc-400">
-            Dive into the future with Aeos Labs. Get in touch and build out a
+          <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">Ready to Upgrade?</h2>
+          <p className="mt-5 max-w-sm leading-relaxed text-zinc-400">
+            Dive into the future with Aethos Vision Labs. Get in touch and build out a
             smarter, more automated org.
           </p>
+          <a href="mailto:hello@aethoscompany.in" className="mt-8 inline-block text-sm text-blue-400 underline-offset-4 hover:underline">hello@aethoscompany.in</a>
         </div>
 
       </div>
 
-      <div className="flex items-center justify-center p-8">
+      <div className="flex items-start justify-center">
         {success ? (
           <div className="w-full max-w-lg space-y-4">
             <Alert className="bg-green-50 border-green-200">
@@ -106,7 +105,7 @@ export function ContactForm() {
           <Form {...form}>
             <form
               onSubmit={form.handleSubmit(onSubmit)}
-              className="w-full max-w-lg space-y-6"
+              className="w-full max-w-lg space-y-5"
             >
               <FormField
                 control={form.control}
@@ -115,7 +114,7 @@ export function ContactForm() {
                   <FormItem>
                     <FormLabel>Email</FormLabel>
                     <FormControl>
-                      <Input placeholder="email@example.com" {...field} />
+                      <Input type="email" autoComplete="email" placeholder="email@example.com" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -128,7 +127,7 @@ export function ContactForm() {
                   <FormItem>
                     <FormLabel>First Name</FormLabel>
                     <FormControl>
-                      <Input placeholder="John" {...field} />
+                      <Input autoComplete="given-name" placeholder="John" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -141,7 +140,7 @@ export function ContactForm() {
                   <FormItem>
                     <FormLabel>Company Name</FormLabel>
                     <FormControl>
-                      <Input placeholder="Acme Inc." {...field} />
+                      <Input autoComplete="organization" placeholder="Acme Inc." {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -156,7 +155,7 @@ export function ContactForm() {
                     <FormControl>
                       <Textarea
                         placeholder="Tell us about your project..."
-                        className="min-h-[120px] resize-none"
+                        className="min-h-[144px] resize-y"
                         {...field}
                       />
                     </FormControl>
@@ -164,7 +163,8 @@ export function ContactForm() {
                   </FormItem>
                 )}
               />
-              <Button type="submit" className="w-full" disabled={loading}>
+              {errorMessage && <p role="alert" className="text-sm text-red-300">{errorMessage}</p>}
+              <Button type="submit" className="h-12 w-full bg-blue-400 text-black hover:bg-blue-300" disabled={loading}>
                 {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
                 Send message
               </Button>

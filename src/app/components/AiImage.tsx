@@ -1,111 +1,29 @@
-"use client";
-import { useEffect, useRef, ReactNode } from "react";
+import { Repeat, Link2, Database, ArrowUpRight } from "lucide-react";
 
-// This component implements the Once UI TiltFx effect.
-function OnceTiltFx({
-  children,
-  className = "",
-}: {
-  children: ReactNode;
-  className?: string;
-}) {
-  const tiltRef = useRef<HTMLDivElement | null>(null);
+const capabilities = [
+  { Icon: Repeat, title: "Automate repetitive work", description: "Reduce manual steps in everyday operations with workflows built around your team." },
+  { Icon: Link2, title: "Connect your tools", description: "Bring the systems you already use together so information can move between them." },
+  { Icon: Database, title: "Put your data to work", description: "Turn scattered information into useful insights that help you make decisions." },
+];
 
-  useEffect(() => {
-    const el = tiltRef.current;
-    if (!el) return;
-
-    const handleMouseMove = (e: MouseEvent) => {
-      const rect = el.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      const centerX = rect.width / 2;
-      const centerY = rect.height / 2;
-      const deltaX = x - centerX;
-      const deltaY = y - centerY;
-      const percentX = deltaX / centerX;
-      const percentY = deltaY / centerY;
-      const maxTilt = 15; // maximum tilt in degrees
-      const tiltX = percentY * maxTilt;
-      const tiltY = -percentX * maxTilt;
-
-      el.style.transform = `rotateX(${tiltX}deg) rotateY(${tiltY}deg)`;
-    };
-
-    const handleMouseLeave = () => {
-      el.style.transform = "rotateX(0deg) rotateY(0deg)";
-    };
-
-    el.addEventListener("mousemove", handleMouseMove);
-    el.addEventListener("mouseleave", handleMouseLeave);
-
-    return () => {
-      el.removeEventListener("mousemove", handleMouseMove);
-      el.removeEventListener("mouseleave", handleMouseLeave);
-    };
-  }, []);
-
+export default function AiSolutions() {
   return (
-    <div ref={tiltRef} className={`once-ui-tiltfx ${className}`}>
-      {children}
-    </div>
-  );
-}
-
-export default function Home() {
-  return (
-    <div className="container">
-      <div className="overlay flex justify-center items-center">
-        <h1
-          className="text-center font-bold text-3xl"
-          style={{ fontFamily: "'Montserrat', sans-serif" }}
-        >
-          AI is changing every day, Aethos will stay up for you
-        </h1>
+    <section className="border-t border-white/10 bg-zinc-950 px-5 py-16 text-white sm:px-8 sm:py-24" aria-labelledby="ai-heading">
+      <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-2 lg:gap-20">
+        <div>
+          <h2 id="ai-heading" className="max-w-lg text-3xl font-semibold leading-tight tracking-tight sm:text-4xl">AI that works for<br className="hidden sm:block" /> your business.</h2>
+          <p className="mt-5 max-w-md text-base leading-7 text-white/60">Technology should make work simpler. We focus on practical AI and automation solutions that fit your operations and goals.</p>
+          <a href="#contact" className="mt-7 inline-flex min-h-11 items-center gap-3 text-sm font-medium text-blue-400 transition-colors hover:text-blue-300">Discuss your workflow <ArrowUpRight size={16} aria-hidden="true" /></a>
+        </div>
+        <ul className="divide-y divide-white/10 border-y border-white/10">
+          {capabilities.map(({ Icon, title, description }) => (
+            <li key={title} className="flex gap-5 py-6 sm:py-7">
+              <Icon size={22} strokeWidth={1.5} className="mt-1 shrink-0 text-blue-400" aria-hidden="true" />
+              <div><h3 className="text-lg font-medium">{title}</h3><p className="mt-2 max-w-md text-sm leading-7 text-white/60">{description}</p></div>
+            </li>
+          ))}
+        </ul>
       </div>
-
-      <OnceTiltFx className="tiltBox">
-        <img src="aiimage.webp" alt="Full Width" className="image" />
-      </OnceTiltFx>
-      <style jsx>{`
-        .container {
-          position: relative;
-          background: #000;
-          width: 100%;
-          height: auto;
-          overflow: hidden;
-        }
-        .overlay {
-          position: absolute;
-          top: 24px;
-          width: 100%;
-          padding: 0 24px;
-          text-align: center;
-          z-index: 2;
-        }
-        .overlay h1 {
-          color: #fff;
-          font-size: clamp(1.25rem, 3vw, 2rem);
-          margin: 0;
-          font-family: sans-serif;
-        }
-        /* Once UI–inspired TiltFx styles */
-        .once-ui-tiltfx {
-          perspective: 1000px;
-          transition: transform 0.2s ease;
-          width: 100%;
-          min-height: 360px;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-        .image {
-          width: 100%;
-          height: auto;
-          filter: grayscale(1);
-          display: block;
-        }
-      `}</style>
-    </div>
+    </section>
   );
 }

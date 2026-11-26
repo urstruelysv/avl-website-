@@ -67,7 +67,7 @@ export default function RotatingWords() {
           ? "opacity-100 transform translate-y-0"
           : "opacity-0 transform translate-y-4"
       }`}
-      style={{ width: width ? `${width}px` : "auto", overflowWrap: "anywhere" }}
+      style={{ width: width ? `${width}px` : "auto", overflowWrap: "normal" }}
     >
       {words[currentIndex]}
     </span>
