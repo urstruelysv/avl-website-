@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
 }
 
 @layer base {
@@ -127,3 +127,5 @@ a:focus-visible, button:focus-visible {
 @media (max-width: 359px) {
   .avl-hero h1 { font-size: 1.75rem; }
 }
+
+.avl-hero-finish { background: radial-gradient(ellipse at 50% 90%, #10213b 0%, #050910 38%, #000 75%); }

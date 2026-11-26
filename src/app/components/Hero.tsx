@@ -6,8 +6,8 @@ import RotatingWords from "./RotatingWords";
 
 export default function Hero() {
   return (
-    <section className="avl-hero relative overflow-hidden bg-black text-white">
-      <RetroGrid className="opacity-30" />
+    <section className="avl-hero avl-hero-finish relative overflow-hidden bg-black text-white">
+      <RetroGrid className="opacity-50" />
       <div className="relative z-10 mx-auto max-w-7xl px-5 pb-10 pt-44 sm:px-8 sm:pt-52 lg:pt-56">
         <div className="mx-auto max-w-4xl text-center">
           <h1 className="text-balance text-[clamp(1.75rem,5vw,3.75rem)] font-bold leading-[1.15] tracking-tight sm:text-5xl lg:text-6xl">
