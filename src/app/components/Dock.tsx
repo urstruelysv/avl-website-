@@ -1,9 +1,8 @@
 "use client";
-import Image from "next/image";
 import { ArrowUpRight } from "./StudioIcons";
 import { useEffect, useRef, useState } from "react";
 
-export default function Dock({ logoSrc }: { logoSrc: string }) {
+export default function Dock() {
  const [open,setOpen]=useState(false);
  const ref=useRef<HTMLElement>(null);
  const toggle=useRef<HTMLButtonElement>(null);
@@ -25,6 +24,6 @@ export default function Dock({ logoSrc }: { logoSrc: string }) {
   document.addEventListener('keydown',key);document.addEventListener('pointerdown',outside);
   return()=>{cancelAnimationFrame(focusFrame);document.body.style.overflow=previousOverflow;document.removeEventListener('keydown',key);document.removeEventListener('pointerdown',outside);};
  },[open]);
- const links=[['What we do','#services'],['How we work','#how-we-work'],['Our work','#work']];
- return <header className="signal-header" ref={ref}><a className="signal-brand" href="#top" aria-label="Aethos Vision Labs home"><Image src={logoSrc} width={36} height={36} alt="" priority/><span>aethos<span className="brand-labs">vision labs</span></span></a><nav className="signal-desktop-nav" aria-label="Main navigation">{links.map(([label,href])=><a href={href} key={href}>{label}</a>)}</nav><a className="signal-nav-cta" href="#contact">Start a conversation <ArrowUpRight size={15}/></a><button ref={toggle} className="signal-menu-toggle" type="button" aria-label={open?'Close menu':'Open menu'} aria-expanded={open} aria-controls="signal-menu" onClick={()=>setOpen(!open)}><span className="menu-glyph" data-open={open||undefined} aria-hidden="true"><i/><i/></span></button>{open&&<nav id="signal-menu" className="signal-mobile-nav" aria-label="Mobile navigation">{[...links,['Start a conversation','#contact']].map(([label,href])=><a key={href} href={href} onClick={()=>setOpen(false)}>{label}<ArrowUpRight size={16}/></a>)}</nav>}</header>;
+ const links=[['Services','#services'],['How we work','#how-we-work']];
+ return <header className="signal-header" ref={ref}><a className="signal-brand" href="#top" aria-label="Aethos Vision Labs home"><span>aethos<span className="brand-labs">vision labs</span></span></a><nav className="signal-desktop-nav" aria-label="Main navigation">{links.map(([label,href])=><a href={href} key={href}>{label}</a>)}</nav><a className="signal-nav-cta" href="#contact">Get in touch <ArrowUpRight size={16}/></a><button ref={toggle} className="signal-menu-toggle" type="button" aria-label={open?'Close menu':'Open menu'} aria-expanded={open} aria-controls="signal-menu" onClick={()=>setOpen(!open)}><span className="menu-glyph" data-open={open||undefined} aria-hidden="true"><i/><i/></span></button>{open&&<nav id="signal-menu" className="signal-mobile-nav" aria-label="Mobile navigation">{[...links,['Get in touch','#contact']].map(([label,href])=><a key={href} href={href} onClick={()=>setOpen(false)}>{label}<ArrowUpRight size={16}/></a>)}</nav>}</header>;
 }
