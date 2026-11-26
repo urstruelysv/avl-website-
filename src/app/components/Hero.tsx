@@ -1,13 +1,10 @@
-import { ArrowUpRight, ArrowDown, Cpu, Film, Code2 } from "./StudioIcons";
+import { ArrowUpRight, ArrowDown } from "./StudioIcons";
 import DitherField from "./DitherField";
 import PixelHeading from "./PixelHeading";
 
 export default function Hero() {
   return <section id="top" className="signal-hero" aria-label="Aethos Vision Labs">
     <DitherField />
-    <div className="hero-signal-tag tag-code"><Code2 size={15} /> Digital experiences</div>
-    <div className="hero-signal-tag tag-ai"><Cpu size={15} /> Built around your business</div>
-    <div className="hero-signal-tag tag-film"><Film size={15} /> Ideas into motion</div>
     <div className="signal-hero-content">
       <PixelHeading as="h1" lines={["Magic,", "at your service."]} />
       <p className="signal-hero-description">We help businesses with websites and brand design, AI tools and workflow automation, and video and social content.</p>

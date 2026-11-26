@@ -13,6 +13,26 @@ export default function SiteMotion({ children }: { children: ReactNode }) {
     query.addEventListener("change", update);
     return () => query.removeEventListener("change", update);
   }, []);
+  useEffect(() => {
+    if (matchMedia("(prefers-reduced-motion: reduce)").matches || !('IntersectionObserver' in window)) return;
+    const elements = document.querySelectorAll<HTMLElement>('.services-intro, .signal-service, .signal-process .section-center');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.replace('reveal-pending', 'reveal-shown');
+        observer.unobserve(entry.target);
+      });
+    }, { threshold: .12 });
+    elements.forEach(element => {
+      if (element.getBoundingClientRect().top < innerHeight) return;
+      element.classList.add('reveal-pending');
+      observer.observe(element);
+    });
+    return () => {
+      observer.disconnect();
+      elements.forEach(element => element.classList.remove('reveal-pending', 'reveal-shown'));
+    };
+  }, [reduced]);
   return <MotionContext.Provider value={{ enabled: !reduced, reduced }}>
     <a href="#main-content" className="skip-link">Skip to content</a>
     <main id="main-content" className="signal-site" data-motion={reduced ? "paused" : "playing"}>{children}</main>
