@@ -1,14 +1,14 @@
 "use client";
 import { useState } from "react";
-import { ArrowUpRight, Compass, Layers, CheckCircle, Play } from "./StudioIcons";
+import { ArrowUpRight, Compass, PenTool, Send, Play } from "./StudioIcons";
 import PixelHeading from "./PixelHeading";
 import ProjectStage from "./ProjectStage";
 import { useSiteMotion } from "./SiteMotion";
 
 const steps = [
-  { name: "Discover", title: "Understand the brief.", copy: "We get to know your business, your audience, and what you want to change. Then we agree on the scope, budget, and next steps.", detail: "A conversation, a clear brief, and a plan.", Icon: Compass },
-  { name: "Build", title: "Design and build.", copy: "Design, development, and content come together around your brief. You see the work as it develops, with room for feedback along the way.", detail: "Real collaboration, from first draft to final detail.", Icon: Layers },
-  { name: "Launch", title: "Deliver and hand over.", copy: "We test the details, help get everything live, and hand it over properly. A website, an automation, or content your team can put to work.", detail: "Built, checked, and ready for your business.", Icon: CheckCircle },
+  { name: "Discover", title: "Understand the brief.", copy: "We get to know your business, your audience, and what you want to change. Then we agree on the scope, budget, and next steps.", Icon: Compass },
+  { name: "Build", title: "Design and build.", copy: "Design, development, and content come together around your brief. You see the work as it develops, with room for feedback along the way.", Icon: PenTool },
+  { name: "Launch", title: "Deliver and hand over.", copy: "We test the details, help get everything live, and hand it over properly. A website, an automation, or content your team can put to work.", Icon: Send },
 ];
 
 export default function OnboardingProcess() {
@@ -22,17 +22,16 @@ export default function OnboardingProcess() {
       <div className="section-center"><PixelHeading lines={["How we work."]} /><p>A clear brief, regular feedback, and a proper handover.</p></div>
       <div className="process-experience">
         <div className="process-controls" role="group" aria-label="Explore our services process">
-          {steps.map(({ name, title, copy, detail, Icon }, i) => <button type="button" key={name} className="process-choice" aria-pressed={phase === i} aria-controls="process-preview" onClick={() => { setSelected(i); setActive(i); }}>
-            <span className="process-choice-top"><span className="process-index">0{i + 1}</span><span>{name}</span><Icon size={20} /></span>
+          {steps.map(({ name, title, copy, Icon }, i) => <button type="button" key={name} className="process-choice" aria-pressed={phase === i} aria-controls="process-preview" onClick={() => { setSelected(i); setActive(i); }}>
+            <span className="process-choice-top"><span className="process-index">0{i + 1}</span><span>{name}</span><Icon size={48} strokeWidth={1.25} aria-hidden="true" /></span>
             <strong>{title}</strong><span className="process-choice-copy">{copy}</span>
-            <span className="process-choice-detail" data-on={phase === i || undefined}><ArrowUpRight size={14} />{detail}</span>
           </button>)}
         </div>
         <div className="process-preview" id="process-preview">
           <div className="process-mobile-explanation" aria-live={selected === null ? "off" : "polite"}><h3>{steps[phase].title}</h3><p>{steps[phase].copy}</p></div>
           <ProjectStage key={run} phase={selected} frozen={!enabled && !reduced} active={active} onPhase={setActive} />
           <div className="process-demo-meta"><p className="demo-caption">A website project, in a nutshell · illustrative process</p><button type="button" className="replay-control" onClick={() => { setSelected(null); setActive(0); setRun(run + 1); }} disabled={!enabled}><Play size={13} /> Replay</button></div>
-          <div className="process-preview-bottom"><span>Your project, from start to finish.<br /><b>One team, from conversation to delivery.</b></span><a href="#contact" className="signal-link">Let’s talk about yours <ArrowUpRight size={16} /></a></div>
+          <div className="process-preview-bottom"><a href="#contact" className="signal-link">Let’s talk about yours <ArrowUpRight size={16} aria-hidden="true" /></a></div>
         </div>
       </div>
     </div>
