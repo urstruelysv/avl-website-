@@ -4,5 +4,7 @@ import WhatWeDo from "./components/WhatWeDo";
 import ContactUs from "./components/ContactUs";
 import Footer from "./components/Footer";
 import OnboardingProcess from "./components/Onbording";
-import Founder from "./components/Founder";
-export default function Home(){return <main className="signal-site"><Dock logoSrc="/logo.png"/><Hero/><OnboardingProcess/><WhatWeDo/><Founder/><section id="contact" className="contact-section" aria-label="Start a project"><ContactUs/></section><Footer/></main>}
+import SelectedWork from "./components/SelectedWork";
+import StudioStatement from "./components/StudioStatement";
+import SiteMotion from "./components/SiteMotion";
+export default function Home(){return <SiteMotion><Dock logoSrc="/logo.png"/><Hero/><SelectedWork/><StudioStatement/><WhatWeDo/><OnboardingProcess/><section id="contact" className="contact-section" aria-label="Start a project"><ContactUs/></section><Footer/></SiteMotion>}

@@ -1,31 +1,34 @@
-# AVL — signal from the noise
+# AVL — a services studio with a pulse
 
-## Purpose and content
-Help visitors understand Aethos Vision Labs and submit a project enquiry. PRODUCT.md is the factual source: a Hyderabad engineering and creative team offering digital presence, AI and automation, and video/content services. Preserve the existing contact delivery behavior, founder identities and hello@aethoscompany.in address.
+## Direction
+AVL sells design, development, AI/automation and content services. Visitors should understand the offer, see real work and start a project conversation. The approved black and blue visual world, pixel serif headlines and dither field remain. This update adds visible motion and project evidence; it does not turn AVL into a software product.
 
-The user pinned the black surface, pixel serif, dithering and staged second section. unfair.so informed the visual direction; the implementation uses original composition and AVL content, with no copied assets, proprietary type, invented clients, testimonials or performance metrics.
+The user supplied Elaya's ai-design-skills and their portfolio. Elaya's landing-page and existing-project redesign skills are installed under `.agents/skills`, with the license. Explicit user choices preserve the existing display font and black palette over conflicting skill defaults. Stageshow authors a website commission walkthrough, not an app being offered for sale.
 
-## Tokens and typography
-- Canvas: `--ink: #08090b`; process surface `#101215`; workspace surface `#15171c`.
-- Type: `--paper: #f0f0ed`; `--soft: #8b9099`; readable supporting text and form placeholders use lighter local values around `#939faf`.
-- Single chromatic accent: `--blue: #8cb9ff`, shared by actions, selection, focus outlines and active process states.
-- Rules are 1px; corners are restrained (typically 5–8px). The primary CTA has a 1px pale-blue border and softly blurred `0 7px 20px #0004` shadow.
-- Body: locally loaded Geist Sans. Display: locally hosted Instrument Serif, registered as AVL Serif; its SIL Open Font License 1.1 is retained in `public/fonts/InstrumentSerif-OFL.txt`.
-- PixelHeading rasterizes that serif into a low-resolution canvas with pixelated scaling. Semantic h1/h2 text remains in the DOM, provides the initial fallback, and stays available to assistive technology; the decorative canvas is aria-hidden.
-- Hero display scales from roughly 64–82px on phones to 144px on desktop; other headings use responsive clamps. Wide content is capped at 1200px, with 48px desktop and 20px phone side gutters.
+## Visual system
+- Canvas: `#08090b`; process surface `#101215`; illustrated website `#181818`; overlay `#272727`.
+- Foreground: `#f0f0ed`, supporting copy around `#a5afbd`. One blue accent, `#8cb9ff`.
+- Body: locally loaded Geist Sans. Display: locally hosted Instrument Serif, rasterized into a pixel canvas with semantic text fallback. Font license remains in `public/fonts`.
+- New content uses the Tailwind type scale and 8/12/16/24/32/40/48/64/80/96px spacing steps. Approved incumbent pixel display sizes stay intact.
+- Desktop content is capped at 1200px. Corners are restrained, rules are 1px, and any elevated object has an offset, blurred shadow.
+- Phosphor icons carry the visible studio UI. Existing unused kit components retain their own icon implementation.
 
-## Composition and behavior
-The hero centers “Magic, at your service.” within a clear reading area, surrounded by a genuine canvas dither field and small discipline labels. One filled enquiry CTA and a quieter process link lead into the page. Services use ruled columns, the founders provide a human section, and the enquiry form closes the flow.
+## Page and proof
+Hero → selected work → word reveal statement → services → process → contact → footer. The founders section is removed from the home page. The service list uses horizontal ruled passages rather than three equal cards. Project previews lead the page after the hero.
 
-DitherField uses a 4×4 Bayer threshold matrix over curved density fields, drawn in 5–6px cells. Slow drift is throttled to approximately one redraw per 130ms. Reduced motion produces a static field; offscreen and hidden-document states skip rendering. Resizing redraws the field. Other reduced-motion rules remove scene transitions and smooth scrolling.
+Selected work is sourced from https://saivamshi.aethoscompany.in/projects and explicitly attributed to founder Sai Vamshi Gannoju's portfolio. Indo Global School, Cirro and Alpha Fitness use real website captures and live links. SaaS contract work and personal experiments are excluded. Client testimonials remain unpublished because no actual client quotes were supplied or found.
 
-Discover, Build and Launch are user-controlled buttons with aria-pressed state and a shared preview target. They switch one retained Stageshow workspace between a brief, a connected enquiry workflow and a handover with a reviewable follow-up draft. The caption explicitly identifies this as an illustrative project; it is not evidence of a client engagement or a functional automation product.
+## Motion thesis
+The focal sequence is a commissioned website: a brief arrives over a coherent website preview, design work takes shape, then a blue delivery note completes the story. This is one illustrative project, not a client engagement claim.
 
-The desktop stage uses a 720×480 design area so the handover outcome stays visible. Below 560px, the stage switches to a 358×450 compact layout with a document card instead of desktop window chrome. At phone widths, compact step controls precede the selected explanation and the workspace; the explanation announces changes politely. Supporting copy and the contact link have separate lines below the illustration.
+The dither field now visibly evolves through curved Bayer threshold fields, at no more than one redraw per 55ms. Its phase persists across pause/resume. Hidden or offscreen canvases skip work. Three quiet hero labels drift; the hero settles once. The separate studio statement activates words in reading order through IntersectionObserver, with no unthrottled scroll listener. Work images respond to hover and keyboard focus.
 
-At 800px the process becomes a single column and navigation collapses to a menu. At 520px services become stacked ruled passages, founder entries stack, and the footer wraps. Decorative hero labels disappear on smaller screens. Focus-visible outlines remain blue throughout.
+The Stageshow sequence plays once when visible, advances after 1.8s and 4.6s, and holds the final delivery state. The three retained overlays move as whole opaque objects. External Discover/Create/Deliver controls allow direct inspection, stopping automatic playback; Replay explicitly starts a new sequence. Wide design area is 720×480. Below 560px, the 358×450 composition uses a website document card rather than a squeezed desktop browser window.
 
-## Styling boundary and final disposition
-`src/app/globals.css` owns site tokens, typography, layout and responsive rules. The Stageshow kit stays separate under `src/components/stageshow/kit` and is served through `public/kit/avl-stage.css`, linked once in the root layout. Project-specific `.project-stage` overrides live in `src/app/components/project-stage.css`.
+A persistent Pause motion control freezes the dither field, decorative CSS animation and current walkthrough phase. Reduced motion shows a complete delivery poster, static dither and fully readable statement. No control requires waiting for animation.
 
-Final review disposition: ship. The four review fixes are resolved: supporting-text contrast, the mobile preview-footer action boundary, the CTA’s 1px border, and its softly blurred shadow. The final desktop stage height is 480px to preserve the handover footer.
+## Responsive and access
+Work becomes a single column on phones, with useful project captions and visible visit links. The mobile navigation is a full-height panel with a morphing toggle, keyboard focus handling, body scroll lock and Escape dismissal. The page includes a skip link, focus styles, semantic headings and a branded 404. Contact validation and delivery stay intact. Metadata describes services, and the social preview is generated locally instead of pointing at an unrelated image host.
+
+## Styling boundary
+Global site styling belongs to `src/app/globals.css`. The original Stageshow CSS remains separate under `/kit`, linked once from the root layout. Project illustration geometry and retained scene transitions are scoped to `.project-stage` in `project-stage.css`; kit row/device internals are not reshaped.
