@@ -55,7 +55,7 @@ function OnceTiltFx({
 export default function Home() {
   return (
     <div className="container">
-      <div className="overlay fixed inset-0 flex justify-center items-center">
+      <div className="overlay flex justify-center items-center">
         <h1
           className="text-center font-bold text-3xl"
           style={{ fontFamily: "'Montserrat', sans-serif" }}
@@ -72,19 +72,20 @@ export default function Home() {
           position: relative;
           background: #000;
           width: 100%;
-          height: 100vh;
+          height: auto;
           overflow: hidden;
         }
         .overlay {
           position: absolute;
-          top: 20px;
+          top: 24px;
           width: 100%;
+          padding: 0 24px;
           text-align: center;
           z-index: 2;
         }
         .overlay h1 {
           color: #fff;
-          font-size: 2rem;
+          font-size: clamp(1.25rem, 3vw, 2rem);
           margin: 0;
           font-family: sans-serif;
         }
@@ -93,7 +94,7 @@ export default function Home() {
           perspective: 1000px;
           transition: transform 0.2s ease;
           width: 100%;
-          height: 100vh;
+          min-height: 360px;
           display: flex;
           justify-content: center;
           align-items: center;
@@ -101,6 +102,7 @@ export default function Home() {
         .image {
           width: 100%;
           height: auto;
+          filter: grayscale(1);
           display: block;
         }
       `}</style>

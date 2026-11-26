@@ -80,12 +80,7 @@ export function ContactForm() {
             smarter, more automated org.
           </p>
         </div>
-        <div
-          className="absolute inset-0 bg-cover bg-center opacity-20"
-          style={{
-            backgroundImage: "url('/placeholder.svg?height=600&width=800')",
-          }}
-        />
+
       </div>
 
       <div className="flex items-center justify-center p-8">

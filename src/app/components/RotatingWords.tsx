@@ -44,26 +44,30 @@ export default function RotatingWords() {
   }, [currentIndex]);
 
   useEffect(() => {
+    let timeout: ReturnType<typeof setTimeout>;
     const interval = setInterval(() => {
       setIsVisible(false);
-      setTimeout(() => {
+      timeout = setTimeout(() => {
         setCurrentIndex((prev) => (prev + 1) % words.length);
         setIsVisible(true);
       }, 1000);
     }, 4000);
 
-    return () => clearInterval(interval);
+    return () => {
+      clearInterval(interval);
+      clearTimeout(timeout);
+    };
   }, []);
 
   return (
     <span
       ref={spanRef}
-      className={`text-blue-400 inline-block transition-all duration-1000  ${
+      className={`text-blue-400 inline-block max-w-full align-top transition-all duration-1000  ${
         isVisible
           ? "opacity-100 transform translate-y-0"
           : "opacity-0 transform translate-y-4"
       }`}
-      style={{ width: width ? `${width}px` : "auto" }}
+      style={{ width: width ? `${width}px` : "auto", overflowWrap: "anywhere" }}
     >
       {words[currentIndex]}
     </span>

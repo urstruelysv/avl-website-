@@ -6,7 +6,6 @@ import Footer from "./components/Footer";
 import OnboardingProcess from "./components/Onbording";
 import Companieslist from "./components/Companieslist";
 import Founder from "./components/Founder";
-import Ready from "./components/Ready";
 import AiImage from "./components/AiImage";
 
 export default function Home() {
@@ -15,12 +14,11 @@ export default function Home() {
       <Dock logoSrc="/logo.png" />
       <Hero />
       <Companieslist />
-      <WhatWeDo />
+      <section id="services" aria-label="Our services"><WhatWeDo /></section>
       <AiImage />
-      <Ready />
       <OnboardingProcess />
-      <ContactUs />
-      <Founder />
+      <section id="contact" aria-label="Contact us"><ContactUs /></section>
+      <section id="about-us" aria-label="About our founders"><Founder /></section>
       <Footer />
     </div>
   );

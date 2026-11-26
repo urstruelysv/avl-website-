@@ -39,19 +39,19 @@ const onboardingSteps = [
 export default function OnboardingProcess() {
   return (
     <div className="bg-black text-white py-20 px-6">
-      <h1 className="text-5xl font-bold text-center mb-16">How We Do It</h1>
+      <h1 className="text-3xl sm:text-5xl font-bold text-center mb-16">How We Do It</h1>
       <div className="space-y-16 max-w-6xl mx-auto">
         {onboardingSteps.map((step, index) => (
           <div
             key={index}
-            className="rounded-xl bg-gradient-to-r from-[#ffd319] via-[#ff2975] to-[#8c1eff] p-1 shadow-lg"
+            className="rounded-xl border border-white/15 p-px"
           >
-            <div className="bg-black p-8 rounded-xl">
-              <div className="flex items-center space-x-6 mb-6">
-                <span className="text-5xl">{step.icon}</span>
-                <h2 className="text-4xl font-bold">{step.title}</h2>
+            <div className="bg-black p-5 sm:p-8 rounded-xl">
+              <div className="flex items-center space-x-4 sm:space-x-6 mb-6">
+                <span className="text-4xl sm:text-5xl shrink-0">{step.icon}</span>
+                <h2 className="text-2xl sm:text-4xl font-bold leading-tight">{step.title}</h2>
               </div>
-              <p className="text-lg text-gray-300 mb-6">{step.description}</p>
+              <p className="text-base sm:text-lg leading-relaxed text-gray-300 mb-6">{step.description}</p>
               <ul className="list-disc list-inside space-y-2 text-gray-400">
                 {step.tasks.map((task, idx) => (
                   <li key={idx}>{task}</li>

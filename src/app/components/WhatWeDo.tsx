@@ -1,6 +1,6 @@
 "use client";
 
-import { BorderBeam } from "./magicui/BorderBeam";
+
 
 export default function WhatWeDo() {
   return (
@@ -23,12 +23,12 @@ export default function WhatWeDo() {
           {/* Services Grid */}
           <div className="relative">
             {/* Adjust the number of meteors as needed */}
-            <BorderBeam></BorderBeam>
+
             {/* Your main content goes here */}
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 relative z-10">
-              <BorderBeam></BorderBeam>
-              <div className="bg-white/5 rounded-lg p-6 sm:p-8 hover:bg-white/10 transition-colors backdrop-blur-sm border border-white/10">
+
+              <div className="bg-white/5 rounded-lg p-6 sm:p-8 hover:bg-white/[0.07] transition-colors backdrop-blur-sm border border-white/10">
                 <h3 className="text-lg sm:text-xl font-bold mb-3 text-blue-400">
                   Digital Presence
                 </h3>
@@ -39,8 +39,8 @@ export default function WhatWeDo() {
                 </p>
               </div>
 
-              <div className="bg-white/5 rounded-lg p-6 sm:p-8 hover:bg-white/10 transition-colors backdrop-blur-sm border border-white/10">
-                <BorderBeam></BorderBeam>
+              <div className="bg-white/5 rounded-lg p-6 sm:p-8 hover:bg-white/[0.07] transition-colors backdrop-blur-sm border border-white/10">
+
                 <h3 className="text-lg sm:text-xl font-bold mb-3 text-blue-400">
                   AI-Driven Solutions
                 </h3>
