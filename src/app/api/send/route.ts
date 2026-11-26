@@ -4,10 +4,13 @@ import { NextResponse } from "next/server";
 import { ContactFormValues } from "@/lib/schema";
 import * as React from "react";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(request: Request) {
   try {
+    if (!process.env.RESEND_API_KEY) {
+      return NextResponse.json({ error: "Email is not configured" }, { status: 503 });
+    }
+    const resend = new Resend(process.env.RESEND_API_KEY);
     // Parse the request body
     const data: ContactFormValues = await request.json();
 
