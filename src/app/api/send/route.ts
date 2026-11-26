@@ -1,27 +1,37 @@
 import { EmailTemplate } from "../../components/email-template.tsx";
 import { Resend } from "resend";
 import { NextResponse } from "next/server";
-import { ContactFormValues } from "@/lib/schema";
+import { contactFormSchema } from "@/lib/schema";
 import * as React from "react";
 
 
 export async function POST(request: Request) {
   try {
+    let payload: unknown;
+    try {
+      payload = await request.json();
+    } catch {
+      return NextResponse.json({ error: "Please send a valid contact form." }, { status: 400 });
+    }
+
+    // Quietly accept bot submissions before checking credentials or contacting email delivery.
+    if (payload && typeof payload === "object" && "website" in payload && payload.website) {
+      return NextResponse.json({ success: true });
+    }
+
+    const parsed = contactFormSchema.safeParse(payload);
+    if (!parsed.success) {
+      return NextResponse.json(
+        { error: parsed.error.issues[0]?.message || "Please check the required fields." },
+        { status: 400 }
+      );
+    }
+    const data = parsed.data;
+
     if (!process.env.RESEND_API_KEY) {
       return NextResponse.json({ error: "Email delivery is unavailable. Please email hello@aethoscompany.in." }, { status: 503 });
     }
     const resend = new Resend(process.env.RESEND_API_KEY);
-    // Parse the request body
-    const data: ContactFormValues = await request.json();
-
-    // Validate required inputs
-    if (!data.email || !data.firstName) {
-      return NextResponse.json(
-        { error: "Missing required fields" },
-        { status: 400 }
-      );
-    }
-
     // Send email using production values
     const result = await resend.emails.send({
       from: "Aethos Company <ceo@aethoscompany.in>", // Verified sender

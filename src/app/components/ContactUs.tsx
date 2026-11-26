@@ -1,10 +1,14 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import PixelHeading from "./PixelHeading";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Loader2, CheckCircle2 } from "lucide-react";
+import { ArrowUpRight } from "./StudioIcons";
+import EmailCopy from "./EmailCopy";
+import ContactPaths from "./ContactPaths";
+import { trackContactEvent } from "@/lib/analytics";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -25,6 +29,7 @@ export function ContactForm() {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const websiteField = useRef<HTMLInputElement>(null);
 
   const form = useForm<ContactFormValues>({
     resolver: zodResolver(contactFormSchema),
@@ -46,7 +51,7 @@ export function ContactForm() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify({ ...data, website: websiteField.current?.value || "" }),
       });
 
       const result = await response.json();
@@ -57,6 +62,7 @@ export function ContactForm() {
 
       setSuccess(true);
       form.reset();
+      if (websiteField.current) websiteField.current.value = "";
     } catch (error) {
       console.error("Error sending message:", error);
       setErrorMessage(
@@ -73,24 +79,24 @@ export function ContactForm() {
     <div className="avl-contact signal-contact signal-wrap">
       <div className="relative flex items-start text-white">
         <div className="relative z-10 max-w-lg">
-          <PixelHeading lines={["Let’s make", "something happen."]}/>
+          <PixelHeading lines={["Start a project."]}/>
           <p className="contact-intro-copy">
-            A new idea, a stubborn problem, or a business ready for its next chapter. Tell us what you’re thinking.
+            Tell us what you need built, your timeline, and any details you already have.
           </p>
-          <a href="mailto:hello@aethoscompany.in" className="mt-8 inline-block text-sm text-blue-400 underline-offset-4 hover:underline">hello@aethoscompany.in</a>
+          <EmailCopy />
+          <ContactPaths />
         </div>
 
       </div>
 
       <div className="flex items-start justify-center">
         {success ? (
-          <div className="w-full max-w-lg space-y-4">
+          <div className="w-full max-w-lg space-y-4" role="status" aria-live="polite">
             <Alert className="bg-blue-400/5 border-blue-300/20">
               <CheckCircle2 className="h-4 w-4 text-blue-300" />
-              <AlertTitle className="text-white">Success!</AlertTitle>
+              <AlertTitle className="text-white">Message sent.</AlertTitle>
               <AlertDescription className="text-white/70">
-                Your message has been sent successfully. We'll get back to you
-                soon!
+                Thanks for telling us about your project. You can also book a call or reach us on WhatsApp.
               </AlertDescription>
             </Alert>
             <Button
@@ -107,6 +113,10 @@ export function ContactForm() {
               onSubmit={form.handleSubmit(onSubmit)}
               className="w-full max-w-lg space-y-5"
             >
+              <div className="sr-only" aria-hidden="true">
+                <label htmlFor="contact-website">Leave this field empty</label>
+                <input ref={websiteField} id="contact-website" name="website" type="text" tabIndex={-1} autoComplete="off" />
+              </div>
               <FormField
                 control={form.control}
                 name="email"
@@ -164,9 +174,9 @@ export function ContactForm() {
                 )}
               />
               {errorMessage && <p role="alert" className="text-sm text-red-300">{errorMessage}</p>}
-              <Button type="submit" className="h-12 w-full bg-[#8cb9ff] text-[#08090b] hover:bg-[#adcfff]" disabled={loading}>
-                {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-                Send message
+              <Button type="submit" className="signal-button contact-submit" disabled={loading} onClick={() => trackContactEvent("form_submit", "contact_form")}>
+                <span>{loading ? "Sending message…" : "Send message"}</span>
+                <span className="button-arrow" aria-hidden="true">{loading ? <Loader2 className="animate-spin motion-reduce:animate-none" size={20} /> : <ArrowUpRight size={20} />}</span>
               </Button>
             </form>
           </Form>
