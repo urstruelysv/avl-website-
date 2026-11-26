@@ -1,33 +1,19 @@
-"use client";
-
-import { ArrowUpRight, ArrowDown } from "lucide-react";
-import { RetroGrid } from "./magicui/Retrogrid";
-import RotatingWords from "./RotatingWords";
+import { ArrowUpRight, ArrowDown, Cpu, Film, Code2 } from "lucide-react";
+import DitherField from "./DitherField";
+import PixelHeading from "./PixelHeading";
 
 export default function Hero() {
-  return (
-    <section className="avl-hero avl-hero-finish relative overflow-hidden bg-black text-white">
-      <RetroGrid className="opacity-50" />
-      <div className="relative z-10 mx-auto max-w-7xl px-5 pb-10 pt-44 sm:px-8 sm:pt-52 lg:pt-56">
-        <div className="mx-auto max-w-4xl text-center">
-          <h1 className="text-balance text-[clamp(1.75rem,5vw,3.75rem)] font-bold leading-[1.15] tracking-tight sm:text-5xl lg:text-6xl">
-            Tailor-made services for your<br className="hidden sm:block" />{" "}
-            <span className="inline-block min-h-[2.3em] max-w-full sm:min-h-[1.15em]"><RotatingWords /></span>
-          </h1>
-          <p className="mt-5 text-base text-white/60 sm:text-lg">Magic, At Your Service</p>
-          <a href="#contact" className="mt-8 inline-flex min-h-12 items-center gap-6 rounded-md bg-blue-400 px-6 py-3 text-sm font-semibold text-black transition-colors hover:bg-blue-300">Work with us <ArrowUpRight size={18} aria-hidden="true" /></a>
-        </div>
-        <div className="mt-20 flex flex-col justify-between gap-8 border-t border-white/15 pt-8 sm:mt-24 sm:flex-row sm:items-end lg:mt-28">
-          <div className="max-w-xl">
-            <h2 className="mb-3 text-xl font-semibold sm:text-2xl">We are Aethos Vision Labs</h2>
-            <p className="text-base leading-relaxed text-white/65">An <span className="text-blue-400">engineering</span> team helping businesses and brands turn views into cash with AI solutions and video content.</p>
-          </div>
-          <div className="space-y-3 sm:max-w-xs text-xs text-white/50 sm:text-right">
-            <p>Based in Hyderabad, India · Tinkering since 2020</p>
-            <a href="#services" className="inline-flex min-h-11 items-center gap-3 text-white/80 transition-colors hover:text-blue-400">Explore our services <ArrowDown size={14} aria-hidden="true" /></a>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
+  return <section className="signal-hero" aria-label="Aethos Vision Labs">
+    <DitherField />
+    <div className="hero-signal-tag tag-code"><Code2 size={15} /> Digital experiences</div>
+    <div className="hero-signal-tag tag-ai"><Cpu size={15} /> Built around your business</div>
+    <div className="hero-signal-tag tag-film"><Film size={15} /> Ideas into motion</div>
+    <div className="signal-hero-content">
+      <PixelHeading as="h1" lines={["Magic,", "at your service."]} />
+      <p className="signal-hero-description">AI solutions. Digital experiences. Content that connects.<br className="desktop-break" /> An engineering and creative team to make your next idea real.</p>
+      <div className="signal-hero-actions"><a className="signal-button" href="#contact">Tell us what you’re thinking <ArrowUpRight size={17} /></a><a className="signal-link" href="#how-we-work">See how we work <ArrowDown size={15} /></a></div>
+      <div className="hero-disciplines"><span>Strategy & design</span><i/><span>AI & engineering</span><i/><span>Video & content</span></div>
+    </div>
+    <div className="hero-ground"><span>Aethos Vision Labs</span><span>Hyderabad, India <span className="ground-dot"/> Working everywhere.</span><a href="#services">A little vision goes a long way <ArrowDown size={13}/></a></div>
+  </section>;
 }

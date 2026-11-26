@@ -82,6 +82,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
+      <head><link rel="stylesheet" href="/kit/avl-stage.css" /></head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >

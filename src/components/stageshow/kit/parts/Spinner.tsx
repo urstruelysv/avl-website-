@@ -1,5 +1,4 @@
 import type { CSSProperties } from 'react'
-import './Spinner.css'
 
 /** A pending indicator: a thin arc turning, in the current color. Holds still under reduced motion. Swap it for a `Check` when the thing finishes. */
 export function Spinner({ size = 14, className, style, ...rest }: { size?: number; className?: string; style?: CSSProperties } & Record<`data-${string}`, unknown>) {

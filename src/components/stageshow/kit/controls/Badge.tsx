@@ -1,5 +1,4 @@
 import type { HTMLAttributes, ReactNode } from 'react'
-import './Badge.css'
 
 /**
  * A small status pill. `dot` adds a status dot before the label; `icon` puts

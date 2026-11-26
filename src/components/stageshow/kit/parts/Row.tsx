@@ -1,6 +1,5 @@
 import type { CSSProperties, HTMLAttributes, ReactNode } from 'react'
 import { Bar } from '../window'
-import './Row.css'
 
 export interface RowProps extends Omit<HTMLAttributes<HTMLDivElement>, 'title'> {
   /** The disc on the left: an `Avatar`, an icon tile, a thumbnail. */

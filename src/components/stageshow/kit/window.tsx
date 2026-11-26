@@ -1,6 +1,5 @@
 import type { HTMLAttributes, ReactNode } from 'react'
 import { useLook } from './looks'
-import './window.css'
 
 export interface WindowProps extends Omit<HTMLAttributes<HTMLDivElement>, 'title'> {
   /** The address. A string, or any node: roll just the path with `<>site.app/<Roll>{path}</Roll></>`. */

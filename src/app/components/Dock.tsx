@@ -1,101 +1,19 @@
 "use client";
-
 import Image from "next/image";
-import Link from "next/link";
+import { ArrowUpRight, Menu, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
-interface DockProps {
-  logoSrc: string;
-}
-
-export default function Dock({ logoSrc }: DockProps) {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const menuRef = useRef<HTMLElement>(null);
-  const toggleRef = useRef<HTMLButtonElement>(null);
-
-  useEffect(() => {
-    if (!isMenuOpen) return;
-    const closeOutside = (event: PointerEvent) => {
-      if (!menuRef.current?.contains(event.target as Node)) setIsMenuOpen(false);
-    };
-    const closeOnEscape = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        setIsMenuOpen(false);
-        toggleRef.current?.focus();
-      }
-    };
-    document.addEventListener("pointerdown", closeOutside);
-    document.addEventListener("keydown", closeOnEscape);
-    return () => {
-      document.removeEventListener("pointerdown", closeOutside);
-      document.removeEventListener("keydown", closeOnEscape);
-    };
-  }, [isMenuOpen]);
-
-  const menuItems = [
-    { title: "What We Do", href: "#services" },
-    { title: "Contact Us", href: "#contact" },
-    { title: "Work With Us", href: "#contact" },
-  ];
-
-  return (
-    <nav ref={menuRef} aria-label="Main navigation" className="fixed top-0 left-0 right-0 px-5 py-3 sm:px-8 sm:py-4 flex justify-between items-center z-50 bg-black/75 backdrop-blur-sm">
-      <Link href="/" className="relative shrink-0 w-20 h-20 sm:w-24 sm:h-24">
-        <Image
-          src="/logo1.png"
-          alt="Aethos Vision Labs"
-          sizes="(max-width: 640px) 80px, 96px"
-          fill
-          className="object-contain"
-          priority
-        />
-      </Link>
-
-      <div className="flex-grow border-t border-white/40 mx-5 sm:mx-8"></div>
-
-      <button
-        ref={toggleRef}
-        type="button"
-        aria-expanded={isMenuOpen}
-        aria-controls="site-menu"
-        onClick={() => setIsMenuOpen(!isMenuOpen)}
-        className="w-11 h-11 shrink-0 flex items-center justify-center hover:bg-white/10 rounded-full transition-colors"
-        aria-label="Toggle menu"
-      >
-        <div className="w-5 h-4 flex flex-col justify-between">
-          <span
-            className={`w-full h-0.5 bg-white transition-transform ${
-              isMenuOpen ? "rotate-45 translate-y-1.5" : ""
-            }`}
-          />
-          <span
-            className={`w-full h-0.5 bg-white transition-opacity ${
-              isMenuOpen ? "opacity-0" : ""
-            }`}
-          />
-          <span
-            className={`w-full h-0.5 bg-white transition-transform ${
-              isMenuOpen ? "-rotate-45 -translate-y-1.5" : ""
-            }`}
-          />
-        </div>
-      </button>
-
-      {isMenuOpen && (
-        <div id="site-menu" className="absolute top-full right-5 sm:right-8 mt-2 w-52 border border-white/10 bg-black/95 rounded-lg shadow-lg overflow-hidden">
-          {menuItems.map((item) => (
-            <Link
-              key={item.title}
-              onClick={() => setIsMenuOpen(false)}
-              href={item.href}
-              className="block px-4 py-3 text-white hover:bg-white/10 transition-colors"
-            >
-              {item.title}
-            </Link>
-          ))}
-        </div>
-      )}
-    </nav>
-  );
+export default function Dock({ logoSrc }: { logoSrc: string }) {
+ const [open,setOpen]=useState(false);
+ const ref=useRef<HTMLElement>(null);
+ const toggle=useRef<HTMLButtonElement>(null);
+ useEffect(()=>{
+  if(!open)return;
+  const key=(e:KeyboardEvent)=>{if(e.key==='Escape'){setOpen(false);toggle.current?.focus();}};
+  const outside=(e:PointerEvent)=>{if(!ref.current?.contains(e.target as Node))setOpen(false);};
+  document.addEventListener('keydown',key);document.addEventListener('pointerdown',outside);
+  return()=>{document.removeEventListener('keydown',key);document.removeEventListener('pointerdown',outside);};
+ },[open]);
+ const links=[['What we do','#services'],['How we work','#how-we-work'],['The people','#about-us']];
+ return <header className="signal-header" ref={ref}><a className="signal-brand" href="#" aria-label="Aethos Vision Labs home"><Image src={logoSrc} width={36} height={36} alt="" priority/><span>aethos<span className="brand-labs">vision labs</span></span></a><nav className="signal-desktop-nav" aria-label="Main navigation">{links.map(([label,href])=><a href={href} key={href}>{label}</a>)}</nav><a className="signal-nav-cta" href="#contact">Start a conversation <ArrowUpRight size={15}/></a><button ref={toggle} className="signal-menu-toggle" type="button" aria-label={open?'Close menu':'Open menu'} aria-expanded={open} aria-controls="signal-menu" onClick={()=>setOpen(!open)}>{open?<X size={22}/>:<Menu size={22}/>}</button>{open&&<nav id="signal-menu" className="signal-mobile-nav" aria-label="Mobile navigation">{[...links,['Start a conversation','#contact']].map(([label,href])=><a key={href} href={href} onClick={()=>setOpen(false)}>{label}<ArrowUpRight size={16}/></a>)}</nav>}</header>;
 }

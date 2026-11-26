@@ -1,5 +1,4 @@
 import type { CSSProperties, HTMLAttributes } from 'react'
-import './Card.css'
 
 /**
  * A surface that holds content: a comment, a receipt, a settings group.

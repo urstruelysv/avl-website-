@@ -5,19 +5,4 @@ import ContactUs from "./components/ContactUs";
 import Footer from "./components/Footer";
 import OnboardingProcess from "./components/Onbording";
 import Founder from "./components/Founder";
-import AiImage from "./components/AiImage";
-
-export default function Home() {
-  return (
-    <div className="min-h-screen bg-black text-white">
-      <Dock logoSrc="/logo.png" />
-      <Hero />
-      <section id="services" aria-label="Our services"><WhatWeDo /></section>
-      <AiImage />
-      <OnboardingProcess />
-      <section id="contact" aria-label="Contact us"><ContactUs /></section>
-      <section id="about-us" aria-label="About our founders"><Founder /></section>
-      <Footer />
-    </div>
-  );
-}
+export default function Home(){return <main className="signal-site"><Dock logoSrc="/logo.png"/><Hero/><OnboardingProcess/><WhatWeDo/><Founder/><section id="contact" className="contact-section" aria-label="Start a project"><ContactUs/></section><Footer/></main>}

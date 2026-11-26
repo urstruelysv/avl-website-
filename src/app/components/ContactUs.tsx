@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import PixelHeading from "./PixelHeading";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Loader2, CheckCircle2 } from "lucide-react";
@@ -69,13 +70,12 @@ export function ContactForm() {
   }
 
   return (
-    <div className="avl-contact mx-auto grid max-w-7xl grid-cols-1 gap-10 border-t border-white/10 px-5 py-20 text-white sm:px-8 sm:py-24 md:grid-cols-2 md:gap-16">
+    <div className="avl-contact signal-contact signal-wrap">
       <div className="relative flex items-start text-white">
         <div className="relative z-10 max-w-lg">
-          <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">Ready to Upgrade?</h2>
-          <p className="mt-5 max-w-sm leading-relaxed text-zinc-400">
-            Dive into the future with Aethos Vision Labs. Get in touch and build out a
-            smarter, more automated org.
+          <PixelHeading lines={["Let’s make", "something happen."]}/>
+          <p className="contact-intro-copy">
+            A new idea, a stubborn problem, or a business ready for its next chapter. Tell us what you’re thinking.
           </p>
           <a href="mailto:hello@aethoscompany.in" className="mt-8 inline-block text-sm text-blue-400 underline-offset-4 hover:underline">hello@aethoscompany.in</a>
         </div>
@@ -85,10 +85,10 @@ export function ContactForm() {
       <div className="flex items-start justify-center">
         {success ? (
           <div className="w-full max-w-lg space-y-4">
-            <Alert className="bg-green-50 border-green-200">
-              <CheckCircle2 className="h-4 w-4 text-green-600" />
-              <AlertTitle className="text-green-800">Success!</AlertTitle>
-              <AlertDescription className="text-green-700">
+            <Alert className="bg-blue-400/5 border-blue-300/20">
+              <CheckCircle2 className="h-4 w-4 text-blue-300" />
+              <AlertTitle className="text-white">Success!</AlertTitle>
+              <AlertDescription className="text-white/70">
                 Your message has been sent successfully. We'll get back to you
                 soon!
               </AlertDescription>
@@ -127,7 +127,7 @@ export function ContactForm() {
                   <FormItem>
                     <FormLabel>First Name</FormLabel>
                     <FormControl>
-                      <Input autoComplete="given-name" placeholder="John" {...field} />
+                      <Input autoComplete="given-name" placeholder="Your first name" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -140,7 +140,7 @@ export function ContactForm() {
                   <FormItem>
                     <FormLabel>Company Name</FormLabel>
                     <FormControl>
-                      <Input autoComplete="organization" placeholder="Acme Inc." {...field} />
+                      <Input autoComplete="organization" placeholder="Your company" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -164,7 +164,7 @@ export function ContactForm() {
                 )}
               />
               {errorMessage && <p role="alert" className="text-sm text-red-300">{errorMessage}</p>}
-              <Button type="submit" className="h-12 w-full bg-blue-400 text-black hover:bg-blue-300" disabled={loading}>
+              <Button type="submit" className="h-12 w-full bg-[#8cb9ff] text-[#08090b] hover:bg-[#adcfff]" disabled={loading}>
                 {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
                 Send message
               </Button>

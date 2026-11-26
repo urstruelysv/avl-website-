@@ -1,79 +1,8 @@
-"use client";
-
-
-
-export default function WhatWeDo() {
-  return (
-    <div className="bg-black text-white relative py-20 sm:py-24">
-      {/* Top separator line */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
-
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="space-y-8 sm:space-y-12">
-          <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">What We Do</h2>
-          {/* Main description */}
-          <p className="text-base sm:text-lg lg:text-xl text-white/80 leading-relaxed max-w-3xl">
-            At{" "}
-            <span className="font-bold text-blue-400">Aethos Vision Labs</span>,
-            we're your all-in-one digital partner. Whether you need AI tools to
-            streamline operations, automated solutions to boost efficiency, or
-            creative content that turns views into loyal customers, we deliver
-            results that fit your unique goals.
-          </p>
-
-          {/* Services Grid */}
-          <div className="relative">
-            {/* Adjust the number of meteors as needed */}
-
-            {/* Your main content goes here */}
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 relative z-10">
-
-              <div className="bg-white/5 rounded-lg p-6 sm:p-8 hover:bg-white/[0.07] transition-colors backdrop-blur-sm border border-white/10">
-                <h3 className="text-lg sm:text-xl font-bold mb-3 text-blue-400">
-                  Digital Presence
-                </h3>
-                <p className="text-base leading-relaxed text-white/70">
-                  From logo design to web development, social media strategy to
-                  digital marketing — we handle every aspect of your digital
-                  footprint with precision and creativity.
-                </p>
-              </div>
-
-              <div className="bg-white/5 rounded-lg p-6 sm:p-8 hover:bg-white/[0.07] transition-colors backdrop-blur-sm border border-white/10">
-
-                <h3 className="text-lg sm:text-xl font-bold mb-3 text-blue-400">
-                  AI-Driven Solutions
-                </h3>
-                <p className="text-base leading-relaxed text-white/70">
-                  Every decision is backed by data, delivering campaigns and
-                  tools that work for you through our advanced AI-driven
-                  insights and analytics.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* Bottom highlight */}
-          <div className="mt-8 border-l-2 border-blue-400 pl-4 bg-blue-400/5 py-4 rounded-r-lg backdrop-blur-sm">
-            <p className="text-sm text-white/90">
-              We're here to empower your business, brand, or YouTube channel
-              with everything it needs to{" "}
-              <span className="font-bold text-blue-400">
-                stand out and grow
-              </span>
-              .
-            </p>
-          </div>
-        </div>
-      </div>
-
-      {/* Decorative elements */}
-      <div className="absolute bottom-0 right-0 w-2/3 sm:w-1/2 h-1/3 sm:h-1/2 bg-blue-400/[0.03] blur-[50px] sm:blur-[100px] rounded-full -z-10" />
-      <div className="absolute top-0 left-0 w-1/2 sm:w-1/3 h-1/4 sm:h-1/3 bg-blue-600/[0.03] blur-[50px] sm:blur-[100px] rounded-full -z-10" />
-
-      {/* Bottom separator line */}
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
-    </div>
-  );
-}
+import { ArrowUpRight, Code2, GitBranch, Film } from "lucide-react";
+import PixelHeading from "./PixelHeading";
+const services=[
+ {Icon:Code2,title:'A presence that feels like you.',copy:'From your identity to your website, we help make every first impression feel considered and connected.',items:['Brand identity & design','Web design & development','Digital strategy']},
+ {Icon:GitBranch,title:'Technology that earns its place.',copy:'Practical AI and automation, shaped around the way your business works. Less friction between the tools, the team, and the task.',items:['AI tools & integrations','Workflow automation','Custom digital solutions']},
+ {Icon:Film,title:'Content worth paying attention to.',copy:'Creative and video content that carries your story, gives your audience a reason to stop, and makes your brand easier to remember.',items:['Video editing & production','Social content','Content strategy']}
+];
+export default function WhatWeDo(){return <section id="services" className="signal-services section-pad"><div className="signal-wrap"><div className="services-intro"><PixelHeading lines={['Different disciplines.', 'One shared vision.']}/><p>You shouldn’t have to connect the dots between a designer, a developer, and a content team.<br/><br/>That’s what we’re here for.</p></div><div className="service-columns">{services.map(({Icon,title,copy,items})=><article className="signal-service" key={title}><Icon size={25} strokeWidth={1.4}/><h3>{title}</h3><p>{copy}</p><ul>{items.map(item=><li key={item}>{item}</li>)}</ul><a href="#contact" aria-label={`Discuss ${title.toLowerCase()}`}>Let’s explore it <ArrowUpRight size={16}/></a></article>)}</div></div></section>}
